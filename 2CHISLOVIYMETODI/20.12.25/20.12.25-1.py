@@ -1,10 +1,7 @@
 import math
 
-
 def f(x):
-    """Подынтегральная функция."""
     return math.sin(x)
-
 
 def compute_integral(a, b, epsilon):
     """Вычисление интеграла методом левых прямоугольников."""
@@ -33,7 +30,6 @@ def compute_integral(a, b, epsilon):
             return I_current, n, abs(I_current - I_prev)
 
         I_prev = I_current
-
 
 def main():
     print("Вычисление интеграла методом левых прямоугольников")
