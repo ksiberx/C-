@@ -55,7 +55,7 @@ class Human:
             self.__house = house
             return True
         else:
-            print(f"❌ Не хватает {price - self.__money} руб")
+            print(f"Не хватает {price - self.__money} руб")
             return False
 
 
@@ -80,7 +80,7 @@ person.earn_money(35000)
 
 print("\n7. Покупаем дом:")
 if person.buy_house(small_house, 10):
-    print("✅ Купили!")
+    print(" Купили!")
 
 print("\n8. Финальное инфо:")
 person.info()
