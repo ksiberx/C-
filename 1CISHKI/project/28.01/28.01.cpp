@@ -108,7 +108,7 @@ int main() {
             }
         }
 
-        // Сортировка (пузырьковая)
+        // Сортировка 
         else if (choice == 5) {
 
             for (int i = 0; i < tasks.size(); i++)
