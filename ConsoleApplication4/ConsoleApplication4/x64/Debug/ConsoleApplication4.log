@@ -1,5 +1,0 @@
-﻿  ConsoleApplication4.cpp
-C:\Users\murtm\source\repos\ConsoleApplication4\ConsoleApplication4\ConsoleApplication4.cpp(13,5): error C2084: функция "int main(void)" уже имеет текст реализации
-      C:\Users\murtm\source\repos\ConsoleApplication4\ConsoleApplication4\ConsoleApplication4.cpp(4,5):
-      см. предыдущее определение "main"
-  
