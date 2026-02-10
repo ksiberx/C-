@@ -1,3 +1,0 @@
-﻿  ConsoleApplication9.cpp
-C:\Users\murtm\source\repos\ConsoleApplication9\ConsoleApplication9\ConsoleApplication9.cpp(53,22): warning C4566: символ, представленный универсальным именем символа "\u00D7", невозможно представить в текущей кодовой странице (1251)
-  ConsoleApplication9.vcxproj -> C:\Users\murtm\source\repos\ConsoleApplication9\x64\Debug\ConsoleApplication9.exe
