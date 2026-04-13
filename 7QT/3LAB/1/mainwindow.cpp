@@ -9,13 +9,13 @@ MainWindow::MainWindow(QWidget *parent)
     srand(time(0));
 
     for(int i = 0; i < 5; i++) {
-        list1.append(rand() % 50);
+        list1.append(rand() % 50); // рандом числа от 0-49
         list2.append(rand() % 50);
     }
 
     ui->textEdit->append("Список 1:");
-    for(int x : list1)
-        ui->textEdit->append(QString::number(x));
+    for(int x : list1) // проходим по всем элементам
+        ui->textEdit->append(QString::number(x)); // вывод
 
     ui->textEdit_2->append("Список 2:");
     for(int x : list2)
@@ -28,13 +28,13 @@ MainWindow::~MainWindow()
 }
 void MainWindow::on_pushButton_clicked()
 {
-    int num = ui->lineEdit->text().toInt();
+    int num = ui->lineEdit->text().toInt(); // число из полля ввода
 
-    if(ui->checkBox->isChecked()) {
+    if(ui->checkBox->isChecked()) { // в первый список
         list1.append(num);
     }
 
-    if(ui->checkBox_2->isChecked()) {
+    if(ui->checkBox_2->isChecked()) { // во второй список
         list2.append(num);
     }
 
