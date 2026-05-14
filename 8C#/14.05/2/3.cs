@@ -33,7 +33,7 @@ namespace ConsoleApp2
             item.product = tovar;
             item.quantity = 3;
 
-            Console.WriteLine("=== Заказ ===");
+            Console.WriteLine("Заказ");
             Console.WriteLine("Код товара: " + item.product.code);
             Console.WriteLine("Товар: " + item.product.name);
             Console.WriteLine("Цена: " + item.product.price);
