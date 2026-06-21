@@ -1,0 +1,58 @@
+<Window x:Class="AutoRacing2D.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Auto Racing 2D" Height="640" Width="900"
+        WindowStartupLocation="CenterScreen" Background="#dddddd"
+        MouseMove="Window_MouseMove">
+
+    <Grid>
+        <!-- ЭКРАН ИГРЫ -->
+        <Grid x:Name="GamePanel" Visibility="Collapsed">
+            <Canvas x:Name="GameCanvas" Width="900" Height="600" ClipToBounds="True" Background="#1a8a3a">
+
+                <!-- серое дорожное полотно -->
+                <Rectangle x:Name="RoadSurface" Fill="#3a3a3a" Width="400" Height="600" Canvas.Left="250" Canvas.Top="0"/>
+
+                <!-- белая разметка по краям дороги -->
+                <Rectangle Fill="White" Width="6" Height="600" Canvas.Left="250" Canvas.Top="0"/>
+                <Rectangle Fill="White" Width="6" Height="600" Canvas.Left="644" Canvas.Top="0"/>
+
+                <!-- прерывистая центральная линия -->
+                <Canvas x:Name="DashContainer" Canvas.Left="447" Canvas.Top="0" Width="6" Height="600"/>
+
+                <!-- машина игрока -->
+                <Rectangle x:Name="PlayerCar" Width="34" Height="56" Fill="#2196F3" RadiusX="6" RadiusY="6" Canvas.Left="433" Canvas.Top="500"/>
+            </Canvas>
+
+            <!-- HUD: очки и скорость (левый верхний угол) -->
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="14,10,0,0">
+                <TextBlock x:Name="ScoreText" Text="Очки: 0" Foreground="White" FontSize="16" FontWeight="Bold"/>
+                <TextBlock x:Name="SpeedText" Text="Скорость: 100 км/час" Foreground="White" FontSize="16" FontWeight="Bold"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- ГЛАВНОЕ МЕНЮ -->
+        <Grid x:Name="MenuPanel" Background="#dddddd">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock x:Name="TitleText" Text="Автогоночки 2D" FontSize="32" Foreground="#222" Margin="0,0,0,40" HorizontalAlignment="Center"/>
+                <Button x:Name="StartButton" Content="Начать игру" Width="220" Height="42" Margin="5" Click="StartButton_Click" Background="#9e9e9e" Foreground="White" BorderThickness="0"/>
+                <Button x:Name="ExitButton" Content="Выйти из игры" Width="220" Height="42" Margin="5" Click="ExitButton_Click" Background="#ef6c6c" Foreground="White" BorderThickness="0"/>
+            </StackPanel>
+            <!-- переключатель языка в правом нижнем углу -->
+            <Button x:Name="LangButton" Content="ru" Width="40" Height="24" Margin="0,0,14,12"
+                    HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                    Background="#bbbbbb" Foreground="White" BorderThickness="0" Click="LangButton_Click"/>
+        </Grid>
+
+        <!-- ЭКРАН ПОРАЖЕНИЯ-->
+        <Grid x:Name="DefeatPanel" Visibility="Collapsed">
+            <Canvas Background="#4a2020" Opacity="1"/>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock x:Name="ScoreFinalText" Text="Количество очков: 0" Foreground="White" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,4"/>
+                <TextBlock x:Name="MaxSpeedText" Text="Максимальная скорость: 0" Foreground="White" FontSize="16" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+                <Button x:Name="RestartButton" Content="Начать игру заново" Width="220" Height="42" Margin="5" Click="RestartButton_Click" Background="#3a8a4a" Foreground="White" BorderThickness="0"/>
+                <Button x:Name="ToMenuButton" Content="Выйти в меню" Width="220" Height="42" Margin="5" Click="ToMenuButton_Click" Background="#d9534f" Foreground="White" BorderThickness="0"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
