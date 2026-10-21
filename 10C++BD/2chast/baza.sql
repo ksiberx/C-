@@ -1,0 +1,37 @@
+
+IF DB_ID(N'Strany') IS NULL
+    CREATE DATABASE Strany;
+GO
+
+USE Strany;
+GO
+
+CREATE TABLE Countries
+(
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Name NVARCHAR(100) NOT NULL,
+    Population BIGINT NOT NULL,
+    Area FLOAT NOT NULL,
+    Continent NVARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Capitals
+(
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    CountryId INT NOT NULL UNIQUE,
+    Name NVARCHAR(100) NOT NULL,
+    Population BIGINT NOT NULL,
+    FOREIGN KEY (CountryId) REFERENCES Countries(Id)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE Cities
+(
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    CountryId INT NOT NULL,
+    Name NVARCHAR(100) NOT NULL,
+    Population BIGINT NOT NULL,
+    FOREIGN KEY (CountryId) REFERENCES Countries(Id)
+        ON DELETE CASCADE
+);
+GO
