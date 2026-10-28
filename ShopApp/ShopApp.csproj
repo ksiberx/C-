@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>                  <!-- консольное приложение -->
+	  <TargetFramework>net472</TargetFramework>    <!-- .NET Framework 4.8: в нём есть System.Data.Linq (LINQ to SQL) -->
+    <LangVersion>latest</LangVersion>             <!-- современный C# (using var, async Main) -->
+    <RootNamespace>ShopApp</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.4" /> <!-- Задание 4: Entity Framework 6 -->
+    <PackageReference Include="Dapper" Version="2.1.35" />         <!-- Задание 5: Dapper -->
+    <Reference Include="System.Configuration" />                   <!-- чтение App.config -->
+    <Reference Include="System.Data.Linq" />                       <!-- Задание 3: LINQ to SQL -->
+  </ItemGroup>
+</Project>

@@ -1,0 +1,14 @@
+C:\Users\murtm\OneDrive\Desktop\ShopApp\bin\Debug\net472\ShopApp.exe.config
+C:\Users\murtm\OneDrive\Desktop\ShopApp\bin\Debug\net472\ShopApp.exe
+C:\Users\murtm\OneDrive\Desktop\ShopApp\bin\Debug\net472\ShopApp.pdb
+C:\Users\murtm\OneDrive\Desktop\ShopApp\bin\Debug\net472\Dapper.dll
+C:\Users\murtm\OneDrive\Desktop\ShopApp\bin\Debug\net472\EntityFramework.SqlServer.dll
+C:\Users\murtm\OneDrive\Desktop\ShopApp\bin\Debug\net472\EntityFramework.dll
+C:\Users\murtm\OneDrive\Desktop\ShopApp\obj\Debug\net472\ShopApp.csproj.AssemblyReference.cache
+C:\Users\murtm\OneDrive\Desktop\ShopApp\obj\Debug\net472\ShopApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\murtm\OneDrive\Desktop\ShopApp\obj\Debug\net472\ShopApp.AssemblyInfoInputs.cache
+C:\Users\murtm\OneDrive\Desktop\ShopApp\obj\Debug\net472\ShopApp.AssemblyInfo.cs
+C:\Users\murtm\OneDrive\Desktop\ShopApp\obj\Debug\net472\ShopApp.csproj.CoreCompileInputs.cache
+C:\Users\murtm\OneDrive\Desktop\ShopApp\obj\Debug\net472\ShopApp.csproj.Up2Date
+C:\Users\murtm\OneDrive\Desktop\ShopApp\obj\Debug\net472\ShopApp.exe
+C:\Users\murtm\OneDrive\Desktop\ShopApp\obj\Debug\net472\ShopApp.pdb

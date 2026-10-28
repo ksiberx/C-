@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "HBGbmze48wg=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\murtm\\OneDrive\\Desktop\\ShopApp\\ShopApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\murtm\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
+    "C:\\Users\\murtm\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512"
+  ],
+  "logs": []
+}
