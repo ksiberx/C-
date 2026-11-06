@@ -1,0 +1,339 @@
+
+#include <iostream>
+#include <vector>
+#include <memory>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+// Задание 1. Банковский счёт
+
+class BankAccount {
+private:
+    double balance_;
+
+public:
+    BankAccount(double balance) {
+        balance_ = balance;
+    }
+
+    void deposit(double amount) {
+        if (amount > 0) {
+            balance_ += amount;
+            cout << "Счёт пополнен\n";
+        }
+        else {
+            cout << "Сумма должна быть положительной\n";
+        }
+    }
+
+    void withdraw(double amount) {
+        if (amount > 0 && amount <= balance_) {
+            balance_ -= amount;
+            cout << "Деньги сняты\n";
+        }
+        else {
+            cout << "Недостаточно средств\n";
+        }
+    }
+
+    double getBalance() const {
+        return balance_;
+    }
+};
+
+// Задание 2. Иерархия животных
+
+class Animal {
+protected:
+    string name;
+
+public:
+    Animal(string n) {
+        name = n;
+    }
+
+    virtual void speak() {
+        cout << name << " издаёт звук\n";
+    }
+};
+
+class Dog : public Animal {
+public:
+    Dog(string n) : Animal(n) {}
+
+    void speak() override {
+        cout << name << ": Гав!\n";
+    }
+};
+
+class Cat : public Animal {
+public:
+    Cat(string n) : Animal(n) {}
+
+    void speak() override {
+        cout << name << ": Мяу!\n";
+    }
+};
+
+// Задание 3. Геометрические фигуры
+
+class Shape {
+public:
+    virtual double area() const = 0;
+
+    virtual string getName() const = 0;
+
+    void describe() const {
+        cout << getName() << ", площадь: "
+             << area() << endl;
+    }
+
+    virtual ~Shape() {}
+};
+
+class Circle : public Shape {
+private:
+    double radius;
+
+public:
+    Circle(double r) {
+        radius = r;
+    }
+
+    double area() const override {
+        return 3.14 * radius * radius;
+    }
+
+    string getName() const override {
+        return "Круг";
+    }
+};
+
+class Rectangle : public Shape {
+private:
+    double width, height;
+
+public:
+    Rectangle(double w, double h) {
+        width = w;
+        height = h;
+    }
+
+    double area() const override {
+        return width * height;
+    }
+
+    string getName() const override {
+        return "Прямоугольник";
+    }
+};
+
+// Задание 4. Калькулятор площадей
+
+class Triangle : public Shape {
+private:
+    double base, height;
+
+public:
+    Triangle(double b, double h) {
+        base = b;
+        height = h;
+    }
+
+    double area() const override {
+        return base * height / 2;
+    }
+
+    string getName() const override {
+        return "Треугольник";
+    }
+};
+
+double total_area(const vector<unique_ptr<Shape>>& shapes) {
+    double total = 0;
+
+    for (const auto& shape : shapes) {
+        total += shape->area();
+    }
+
+    return total;
+}
+
+// Задание 5. Магазин
+
+class Product {
+private:
+    double productPrice;
+
+public:
+    Product(double p) {
+        if (p < 0) {
+            throw invalid_argument("Цена не может быть отрицательной");
+        }
+        productPrice = p;
+    }
+
+    virtual double price() const {
+        return productPrice;
+    }
+
+    virtual string getName() const = 0;
+
+    virtual ~Product() {}
+};
+
+class Book : public Product {
+private:
+    string title;
+
+public:
+    Book(string t, double p) : Product(p) {
+        title = t;
+    }
+
+    string getName() const override {
+        return "Книга: " + title;
+    }
+};
+
+class Electronics : public Product {
+private:
+    string title;
+    int warranty;
+
+public:
+    Electronics(string t, double p, int w) : Product(p) {
+        title = t;
+        warranty = w;
+    }
+
+    string getName() const override {
+        return "Техника: " + title +
+               " (гарантия " + to_string(warranty) + " мес.)";
+    }
+};
+
+class Food : public Product {
+private:
+    string title;
+    int days;
+
+public:
+    Food(string t, double p, int d) : Product(p) {
+        title = t;
+        days = d;
+    }
+
+    double price() const override {
+        if (days <= 3) {
+            return Product::price() * 0.8;
+        }
+
+        return Product::price();
+    }
+
+    string getName() const override {
+        return "Продукт: " + title;
+    }
+};
+
+class Cart {
+private:
+    vector<Product*> products;
+
+public:
+    void add(Product* product) {
+        products.push_back(product);
+    }
+
+    double total() const {
+        double sum = 0;
+
+        for (auto product : products) {
+            sum += product->price();
+        }
+
+        return sum;
+    }
+
+    void receipt() const {
+        cout << "\n--- ЧЕК ---\n";
+
+        for (auto product : products) {
+            cout << product->getName()
+                 << " - " << product->price()
+                 << " руб.\n";
+        }
+
+        cout << "Итого: " << total() << " руб.\n";
+    }
+};
+
+// Главная функция
+
+int main() {
+    cout << fixed << setprecision(2);
+
+    // Задание 1
+    cout << "\n--- Задание 1 ---\n";
+
+    BankAccount account(1000);
+    account.deposit(500);
+    account.withdraw(200);
+
+    cout << "Баланс: " << account.getBalance() << endl;
+
+    // account.balance_ = 5000; // Ошибка: поле private
+
+    // Задание 2
+    cout << "\n--- Задание 2 ---\n";
+
+    Dog dog("Бобик");
+    Cat cat("Мурка");
+
+    dog.speak();
+    cat.speak();
+
+    // Задание 3
+    cout << "\n--- Задание 3 ---\n";
+
+    Circle circle(5);
+    Rectangle rectangle(4, 6);
+
+    circle.describe();
+    rectangle.describe();
+
+    // Задание 4
+    cout << "\n--- Задание 4 ---\n";
+
+    vector<unique_ptr<Shape>> shapes;
+
+    shapes.push_back(make_unique<Circle>(5));
+    shapes.push_back(make_unique<Rectangle>(4, 6));
+    shapes.push_back(make_unique<Triangle>(3, 8));
+
+    for (const auto& shape : shapes) {
+        shape->describe();
+    }
+
+    cout << "Общая площадь: "
+         << total_area(shapes) << endl;
+
+    // Задание 5
+    cout << "\n--- Задание 5 ---\n";
+
+    Book book("C++ для начинающих", 500);
+    Electronics laptop("Ноутбук", 50000, 24);
+    Food milk("Молоко", 100, 2);
+
+    Cart cart;
+
+    cart.add(&book);
+    cart.add(&laptop);
+    cart.add(&milk);
+
+    cart.receipt();
+
+    return 0;
+}
