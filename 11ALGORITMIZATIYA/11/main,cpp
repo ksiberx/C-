@@ -1,0 +1,52 @@
+#include <QApplication>
+#include <QWidget>
+#include <QVBoxLayout>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QMessageBox>
+
+class PasswordWindow : public QWidget {
+    Q_OBJECT
+
+public:
+    PasswordWindow(QWidget *parent = nullptr) : QWidget(parent) {
+        setWindowTitle("Проверка пароля");
+        resize(300, 130);
+
+        QVBoxLayout *layout = new QVBoxLayout(this);
+
+        passwordEdit = new QLineEdit(this);
+        passwordEdit->setPlaceholderText("Введите пароль");
+        passwordEdit->setEchoMode(QLineEdit::Password);
+        layout->addWidget(passwordEdit);
+
+        QPushButton *checkButton = new QPushButton("Проверить", this);
+        layout->addWidget(checkButton);
+
+        connect(checkButton, &QPushButton::clicked, this, &PasswordWindow::checkPassword);
+    }
+
+private slots:
+    void checkPassword() {
+        const QString correctPassword = "12345";
+        if (passwordEdit->text() == correctPassword) {
+            QMessageBox::information(this, "Успех", "Доступ разрешён");
+        } else {
+            QMessageBox::critical(this, "Ошибка", "Неверный пароль");
+        }
+    }
+
+private:
+    QLineEdit *passwordEdit;
+};
+
+int main(int argc, char *argv[]) {
+    QApplication app(argc, argv);
+
+    PasswordWindow window;
+    window.show();
+
+    return app.exec();
+}
+
+#include "main.moc"
